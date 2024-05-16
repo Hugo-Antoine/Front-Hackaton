@@ -17,14 +17,16 @@ export const useTranslateVoice = () => {
     value: "en",
     label: "English",
   });
-  const [mediaRecorder, setMediaRecorder] = useState(null);
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(
+    null
+  );
   const [recording, setRecording] = useState(false);
   const isRecording = useRef(false);
-  const chunks = useRef([]);
+  const chunks = useRef<Blob[]>([]);
 
   // Refs to store the latest inputLang and outputLang values
-  const inputLangRef = useRef(null);
-  const outputLangRef = useRef(null);
+  const inputLangRef = useRef<any>(null);
+  const outputLangRef = useRef<any>(null);
 
   // Update the refs whenever inputLang or outputLang changes
   useEffect(() => {
@@ -51,7 +53,7 @@ export const useTranslateVoice = () => {
     }
   };
 
-  const getInputText = async (base64data) => {
+  const getInputText = async (base64data: string) => {
     try {
       const inputResponse = await axiosInstance.post(
         "/speechToText",
@@ -86,11 +88,11 @@ export const useTranslateVoice = () => {
     }
   };
 
-  const initialMediaRecorder = (stream) => {
+  const initialMediaRecorder = (stream: any) => {
     const mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.onstart = () => {
-      createMediaStream(stream);
+      createMediaStream(stream, true, ()=>{});
       chunks.current = [];
     };
 

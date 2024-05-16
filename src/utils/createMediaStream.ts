@@ -1,5 +1,5 @@
 // Function to calculate the peak level from the analyzer data
-const getPeakLevel = (analyzer) => {
+const getPeakLevel = (analyzer:any) => {
     // Create a Uint8Array to store the audio data
     const array = new Uint8Array(analyzer.fftSize);
   
@@ -13,7 +13,7 @@ const getPeakLevel = (analyzer) => {
     );
   };
   
-  const createMediaStream = (stream, isRecording, callback) => {
+  const createMediaStream = (stream: any, isRecording:boolean, callback: any) => {
     // Create a new AudioContext
     const context = new AudioContext();
   

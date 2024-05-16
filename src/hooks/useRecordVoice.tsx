@@ -12,7 +12,7 @@ export const useRecordVoice = () => {
   const [recording, setRecording] = useState(false);
   const [lang, setLang] = useState("en"); // ["en", "fr", "yo"
   const isRecording = useRef(false);
-  const chunks = useRef([]);
+  const chunks = useRef<Blob[]>([]);
 
   const startRecording = () => {
     if (mediaRecorder) {
