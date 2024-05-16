@@ -10,8 +10,12 @@ import axiosInstance from "@/axios/axios";
 import { useRecordVoice } from "@/hooks/useRecordVoice";
 import Cookies from "js-cookie";
 
+type Text = {
+  author: "user" | "ai";
+  text: string;
+};
 export default function Home() {
-  const [texts, setTexts] = useState([]);
+  const [texts, setTexts] = useState<Text[]>([]);
   const { startRecording, stopRecording, text } = useRecordVoice();
   const [isRecording, setIsRecording] = useState(false);
   const [prompt, setPrompt] = useState("");

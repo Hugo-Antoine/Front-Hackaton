@@ -22,7 +22,7 @@ export default function Home() {
   useEffect(() => {
     const savedLang = Cookies.get("defaultLang");
     if (savedLang) {
-      setDefaultLang(languages.find((lang) => lang.value === savedLang));
+      setDefaultLang(languages.find((lang) => lang.value === savedLang)!);
     }
   }, []);
 

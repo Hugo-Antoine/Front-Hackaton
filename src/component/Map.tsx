@@ -6,6 +6,12 @@ import { IconMapPin } from "@tabler/icons-react";
 import React, { useState, useEffect } from "react";
 import axiosInstance from "@/axios/axios";
 
+type PointOfInterest = {
+  lat: number;
+  long: number;
+  visited: boolean;
+};
+
 export default function MapComponent() {
   const mapboxToken =
     "pk.eyJ1IjoiaHVnb2FudG9pbmUiLCJhIjoiY2x3NWJqenRvMWExNDJpcXNrNHlwM3YxdSJ9.vDBZpyfe_cX4IJ9uvXfQEg";
@@ -15,7 +21,9 @@ export default function MapComponent() {
     long: 2.6051,
   });
 
-  const [pointsOfInterest, setPointsOfInterest] = useState([]);
+  const [pointsOfInterest, setPointsOfInterest] = useState<PointOfInterest[]>(
+    []
+  );
   const [route, setRoute] = useState(null);
 
   // [

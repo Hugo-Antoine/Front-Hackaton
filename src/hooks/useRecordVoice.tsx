@@ -6,7 +6,9 @@ import axiosInstance from "@/axios/axios";
 
 export const useRecordVoice = () => {
   const [text, setText] = useState("");
-  const [mediaRecorder, setMediaRecorder] = useState(null);
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(
+    null
+  );
   const [recording, setRecording] = useState(false);
   const [lang, setLang] = useState("en"); // ["en", "fr", "yo"
   const isRecording = useRef(false);
@@ -28,7 +30,7 @@ export const useRecordVoice = () => {
     }
   };
 
-  const getText = async (base64data) => {
+  const getText = async (base64data: string) => {
     try {
       const response = await axiosInstance.post(
         "/api/speechToText",
@@ -49,11 +51,11 @@ export const useRecordVoice = () => {
     }
   };
 
-  const initialMediaRecorder = (stream) => {
+  const initialMediaRecorder = (stream: any) => {
     const mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.onstart = () => {
-      createMediaStream(stream);
+      createMediaStream(stream, true, () => {});
       chunks.current = [];
     };
 

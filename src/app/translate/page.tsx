@@ -31,7 +31,7 @@ const LanguageSwitcher = () => {
   } = useTranslateVoice();
 
   const [isRecording, setIsRecording] = useState(false);
-  const [audioFile, setAudioFile] = useState(null);
+  const [audioFile, setAudioFile] = useState<HTMLAudioElement | null>(null);
 
   function buttonPressed() {
     if (!isRecording) {
@@ -59,7 +59,9 @@ const LanguageSwitcher = () => {
   }, [outputAudio]);
 
   function playAudio() {
-    audioFile.play();
+    if (audioFile) {
+      audioFile.play();
+    }
   }
 
   return (

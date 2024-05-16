@@ -3,13 +3,20 @@ import { useEffect, useState, useRef } from "react";
 import { blobToBase64 } from "@/utils/blobToBase64";
 import { createMediaStream } from "@/utils/createMediaStream";
 import axiosInstance from "@/axios/axios";
+import { ComboboxItem } from "@mantine/core";
 
 export const useTranslateVoice = () => {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [outputAudio, setOutputAudio] = useState("");
-  const [inputLang, setInputLang] = useState(null);
-  const [outputLang, setOutputLang] = useState(null);
+  const [inputLang, setInputLang] = useState<ComboboxItem>({
+    value: "en",
+    label: "English",
+  });
+  const [outputLang, setOutputLang] = useState<ComboboxItem>({
+    value: "en",
+    label: "English",
+  });
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [recording, setRecording] = useState(false);
   const isRecording = useRef(false);
