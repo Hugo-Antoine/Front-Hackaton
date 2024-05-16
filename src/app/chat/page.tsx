@@ -68,7 +68,7 @@ export default function Home() {
       setPrompt("");
     }
   }
-
+  console.log(texts);
   return (
     <div
       style={{

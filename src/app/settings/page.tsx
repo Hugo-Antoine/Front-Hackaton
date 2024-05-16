@@ -16,6 +16,7 @@ export default function Home() {
     { value: "fr", label: "Français" },
     { value: "en", label: "English" },
     { value: "yo", label: "Yoruba" },
+    { value: "fon", label: "Fon" },
   ];
 
   // Load the default language from cookies when the component mounts

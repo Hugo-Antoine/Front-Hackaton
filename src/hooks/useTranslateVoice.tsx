@@ -92,7 +92,7 @@ export const useTranslateVoice = () => {
     const mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.onstart = () => {
-      createMediaStream(stream, true, ()=>{});
+      createMediaStream(stream, true, () => {});
       chunks.current = [];
     };
 
@@ -102,6 +102,7 @@ export const useTranslateVoice = () => {
 
     mediaRecorder.onstop = () => {
       const audioBlob = new Blob(chunks.current, { type: "audio/wav" });
+      console.log(audioBlob);
       blobToBase64(audioBlob, getInputText);
     };
 

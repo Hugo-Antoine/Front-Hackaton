@@ -16,6 +16,7 @@ const LanguageSwitcher = () => {
     { value: "fr", label: "Français" },
     { value: "en", label: "English" },
     { value: "yo", label: "Yoruba" },
+    { value: "fon", label: "Fon" },
   ];
 
   const {
